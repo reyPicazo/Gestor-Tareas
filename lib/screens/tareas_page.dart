@@ -80,7 +80,11 @@ class _TareasPageState extends State<TareasPage> {
   }
 
   Future<void> _eliminarTarea(Tarea tarea) async {
-    //
+    try {
+      await _db.eliminarTarea(tarea.id);
+    } catch (e) {
+      _mostrarMensaje('Error al eliminar la tarea: $e');
+    }
   }
 
   void _mostrarMensaje(String mensaje) {
